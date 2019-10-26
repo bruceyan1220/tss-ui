@@ -10,7 +10,7 @@ const TableHeader = props => {
         {item.inst_name && <th>Instance</th>}
         <th>DB</th>
         {item.count && <th>Count</th>}
-        <th>SQL Id</th>
+        <th onClick={props.handleSortTable((a, b) => a.sql_id - b.sql_id, (a, b) => b.sql_id - a.sql_id)}>SQL Id</th>
         <th>SQL Text</th>
         <th>Datetime</th>
         <th>Query Time</th>

@@ -9,7 +9,7 @@ const Table = props => {
     <>
       <div className="tss-TableWrapper">
         <table className="table is-fullwidth is-bordered is-hoverable tss-Table">
-          <Header item={props.data.length > 0 ? props.data[0] : {}} />
+          <Header handleSortTable={props.handleSortTable} item={props.data.length > 0 ? props.data[0] : {}} />
           <tbody>
             {props.data.length > 0 &&
               props.data.map((item, i) => (

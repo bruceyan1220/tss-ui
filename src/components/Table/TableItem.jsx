@@ -23,7 +23,7 @@ const TableItem = props => {
       {item.count && <td>{item.count}</td>}
       <td>{item.sql_id}</td>
       <td className="sql-text" data-tip={item.sql_text} data-for="sqlText">
-        {item.sql_text.substring(0, 50) + '...'}
+        {item.sql_text && item.sql_text.substring(0, 50) + '...'}
       </td>
       <td className="datetime">
         {moment(
