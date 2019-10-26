@@ -21,7 +21,7 @@ class AreaChart extends Component {
 
   componentDidMount() {
     this.initChart()
-    this.reRenderChart(mockData)
+    this.reRenderChart(this.props.data.length > 0 ? this.props.data : mockData)
   }
 
   initChart = () => {

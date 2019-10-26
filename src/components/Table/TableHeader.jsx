@@ -9,6 +9,7 @@ const TableHeader = props => {
         <th>Cluster</th>
         {item.inst_name && <th>Instance</th>}
         <th>DB</th>
+        {item.count && <th>Count</th>}
         <th>SQL Id</th>
         <th>SQL Text</th>
         <th>Datetime</th>

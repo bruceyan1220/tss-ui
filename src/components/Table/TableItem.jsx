@@ -17,6 +17,7 @@ const TableItem = props => {
       <td>{item.cluster}</td>
       {item.inst_name && <td>{item.inst_name}</td>}
       <td>{item.schema_name}</td>
+      {item.count && <td>{item.count}</td>}
       <td>{item.sql_id}</td>
       <td className="sql-text" data-tip={item.sql_text} data-for="sqlText">
         {item.sql_text.substring(0, 50) + '...'}
