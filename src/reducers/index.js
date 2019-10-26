@@ -8,7 +8,9 @@ const reducer = (
     realtimeInstance: '',
     report: [],
     reportCluster: '',
-    reportInstance: ''
+    reportInstance: '',
+    singleSqlTrending: [],
+    sqlInfo: {}
   },
   action
 ) => {
@@ -27,6 +29,10 @@ const reducer = (
       return { ...state, reportCluster: action.cluster }
     case types.REPORT_INSTANCE_SET:
       return { ...state, reportInstance: action.instance }
+    case types.SINGLE_SQL_TRENDING_SET:
+      return { ...state, singleSqlTrending: action.data }
+    case types.SQL_INFO_SET:
+      return { ...state, sqlInfo: action.sql }
     default:
       return state
   }

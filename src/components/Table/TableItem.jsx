@@ -5,11 +5,14 @@ const TableItem = props => {
   const item = props.item
 
   const handleShowDetails = () => {
+    props.handleGetSingleSqlTrending(item.cluster, item.sql_id)
+    props.handleGetSqlInfo(item.cluster, item.query_id)
+
     const app = document.querySelector('.tss-App')
     const details = document.querySelector('.tss-Details')
 
-    app.style.transform = 'translateX(-50vw)'
-    details.style.transform = 'translateX(40vw)'
+    app.style.transform = 'translateX(50vw)'
+    details.style.transform = 'translateX(10vw)'
   }
 
   return (

@@ -6,6 +6,10 @@
   margin: 2rem 0;
   background: #fff;
   transition: all 0.5s;
-  transform: translateX(100vw);
+  transform: translateX(-100vw);
   z-index: 999;
+
+  .panel-block {
+    padding: 0.75em 1em;
+  }
 }

@@ -1,6 +1,7 @@
 import * as actions from './'
 import * as realtimeAPI from '../api/realtime'
 import * as reportAPI from '../api/report'
+import * as sqlAPI from '../api/sql'
 
 function getRealtimeTrending(params) {
   return dispatch => {
@@ -32,4 +33,24 @@ function getReport(params) {
   }
 }
 
-export { getRealtimeTrending, getRealtimeQuery, getReport }
+function getSqlInfo(cluster, queryId) {
+  return dispatch => {
+    sqlAPI.getSqlInfo(cluster, queryId).then(resp => {
+      const data = resp.data.results
+
+      dispatch(actions.sqlInfoSet(data))
+    })
+  }
+}
+
+function getSingleSqlTrending(cluster, sqlId) {
+  return dispatch => {
+    sqlAPI.getSingleSqlTrending(cluster, sqlId).then(resp => {
+      const data = resp.data.results
+
+      dispatch(actions.singleSqlTrendingSet(data))
+    })
+  }
+}
+
+export { getRealtimeTrending, getRealtimeQuery, getReport, getSqlInfo, getSingleSqlTrending }

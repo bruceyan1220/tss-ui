@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { getRealtimeQuery, getRealtimeTrending } from '../../actions/apis'
+import { getRealtimeQuery, getRealtimeTrending, getSqlInfo, getSingleSqlTrending } from '../../actions/apis'
 
 import AreaChart from '../AreaChart'
 import Table from '../Table'
@@ -70,7 +70,13 @@ const Realtime = props => {
         <div className="panel-heading tss-panel-heading">
           <div className="title is-4">Realtime Query</div>
         </div>
-        <Table header={TableHeader} item={TableItem} data={props.queryData} />
+        <Table
+          header={TableHeader}
+          item={TableItem}
+          data={props.queryData}
+          handleGetSqlInfo={props.handleGetSqlInfo}
+          handleGetSingleSqlTrending={props.handleGetSingleSqlTrending}
+        />
       </article>
     </div>
   )
@@ -88,7 +94,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleGetRealtimeTrending: params => dispatch(getRealtimeTrending(params)),
-  handleGetRealtimeQuery: params => dispatch(getRealtimeQuery(params))
+  handleGetRealtimeQuery: params => dispatch(getRealtimeQuery(params)),
+  handleGetSqlInfo: (cluster, queryId) => dispatch(getSqlInfo(cluster, queryId)),
+  handleGetSingleSqlTrending: (cluster, sqlId) => dispatch(getSingleSqlTrending(cluster, sqlId))
 })
 
 export default connect(

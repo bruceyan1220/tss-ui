@@ -21,7 +21,7 @@ class AreaChart extends Component {
 
   componentDidMount() {
     this.initChart()
-    this.reRenderChart(this.props.data.length > 0 ? this.props.data : mockData)
+    this.reRenderChart(this.props.data && this.props.data.length > 0 ? this.props.data : mockData)
   }
 
   initChart = () => {
@@ -119,7 +119,7 @@ class AreaChart extends Component {
 
     const that = this
     function mousemove() {
-      const data = that.props.data.length > 0 ? that.props.data : mockData
+      const data = that.props.data && that.props.data.length > 0 ? that.props.data : mockData
 
       const x0 = x.invert(d3.mouse(this)[0])
       let i = bisectDate(data, x0)

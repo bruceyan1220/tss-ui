@@ -12,7 +12,14 @@ const Table = props => {
           <Header item={props.data.length > 0 ? props.data[0] : {}} />
           <tbody>
             {props.data.length > 0 &&
-              props.data.map((item, i) => <Item key={item.query_id + item.sql_id + i} item={item} />)}
+              props.data.map((item, i) => (
+                <Item
+                  key={item.query_id + item.sql_id + i}
+                  item={item}
+                  handleGetSqlInfo={props.handleGetSqlInfo}
+                  handleGetSingleSqlTrending={props.handleGetSingleSqlTrending}
+                />
+              ))}
           </tbody>
         </table>
       </div>

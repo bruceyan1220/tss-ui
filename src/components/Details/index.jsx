@@ -1,4 +1,6 @@
 import React from 'react'
+import AreaChart from '../AreaChart'
+import { connect } from 'react-redux'
 
 const Details = props => {
   let handleClose = () => {
@@ -6,13 +8,13 @@ const Details = props => {
     const details = document.querySelector('.tss-Details')
 
     app.style.transform = ''
-    details.style.transform = 'translateX(100vw)'
+    details.style.transform = 'translateX(-100vw)'
   }
 
   return (
     <article className="panel tss-Details">
       <div className="panel-heading tss-panel-heading">
-        <div className="title is-4">SQL Details</div>
+        <div className="title is-4">SQL Info</div>
         <div onClick={handleClose}>
           <i
             style={{
@@ -23,9 +25,25 @@ const Details = props => {
           />
         </div>
       </div>
-      <div className="panel-block"></div>
+      <div className="panel-block">
+        <div className="title is-5">Trending</div>
+      </div>
+      <div className="panel-block">
+        <AreaChart data={props.singleSqlTrending} />
+      </div>
     </article>
   )
 }
 
-export default Details
+const mapStateToProps = state => ({
+  singleSqlTrending: state.singleSqlTrending.map(d => ({
+    date: new Date(d.day_time),
+    count: d.counter
+  })),
+  sqlInfo: state.sqlInfo
+})
+
+export default connect(
+  mapStateToProps,
+  null
+)(Details)

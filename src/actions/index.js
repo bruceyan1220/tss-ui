@@ -34,3 +34,13 @@ export const reportInstanceSet = instance => ({
   type: types.REPORT_INSTANCE_SET,
   instance
 })
+
+export const sqlInfoSet = sql => ({
+  type: types.SQL_INFO_SET,
+  sql
+})
+
+export const singleSqlTrendingSet = data => ({
+  type: types.SINGLE_SQL_TRENDING_SET,
+  data
+})
