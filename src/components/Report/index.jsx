@@ -10,7 +10,10 @@ const Report = props => (
     <TssInputGroup type="report" />
     <article className="panel panel-report">
       <div className="panel-heading tss-panel-heading">
-        <div className="title is-4">Statistical Report</div>
+        <div className="title is-4">
+          Statistical Report {props.reportCluster ? `(Cluster: ${props.reportCluster})` : ''}{' '}
+          {props.reportInstance ? `(Instance: ${props.reportInstance})` : ''}
+        </div>
       </div>
       <Table header={TableHeader} item={TableItem} data={props.reportData} />
     </article>
@@ -18,7 +21,9 @@ const Report = props => (
 )
 
 const mapStateToProps = state => ({
-  reportData: state.report
+  reportData: state.report,
+  reportCluster: state.reportCluster,
+  reportInstance: state.reportInstance
 })
 
 export default connect(

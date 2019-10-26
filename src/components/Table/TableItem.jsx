@@ -4,8 +4,16 @@ import moment from 'moment'
 const TableItem = props => {
   const item = props.item
 
+  const handleShowDetails = () => {
+    const app = document.querySelector('.tss-App')
+    const details = document.querySelector('.tss-Details')
+
+    app.style.transform = 'translateX(-50vw)'
+    details.style.transform = 'translateX(40vw)'
+  }
+
   return (
-    <tr className="tss-TableItem">
+    <tr className="tss-TableItem" onClick={handleShowDetails}>
       <td>{item.cluster}</td>
       {item.inst_name && <td>{item.inst_name}</td>}
       <td>{item.schema_name}</td>

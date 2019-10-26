@@ -24,3 +24,13 @@ export const reportGet = data => ({
   type: types.REPORT_GET,
   data
 })
+
+export const reportClusterSet = cluster => ({
+  type: types.REPORT_CLUSTER_SET,
+  cluster
+})
+
+export const reportInstanceSet = instance => ({
+  type: types.REPORT_INSTANCE_SET,
+  instance
+})

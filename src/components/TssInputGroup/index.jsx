@@ -1,5 +1,5 @@
 import { getRealtimeQuery, getRealtimeTrending, getReport } from '../../actions/apis'
-import { realtimeClusterSet, realtimeInstanceSet } from '../../actions'
+import { realtimeClusterSet, realtimeInstanceSet, reportClusterSet, reportInstanceSet } from '../../actions'
 
 import DateTimePicker from '../DateTimePicker'
 import React, { useState } from 'react'
@@ -18,15 +18,16 @@ const TssInputGroup = props => {
   }
 
   const handleDifferentGet = () => {
-    props.handleSetRealtimeCluster(params.cluster)
-    props.handleSetRealtimeInstance(params.instance)
-
     switch (props.type) {
       case 'realtime':
+        props.handleSetRealtimeCluster(params.cluster)
+        props.handleSetRealtimeInstance(params.instance)
         props.handleGetRealtimeTrending(params)
         props.handleGetRealtimeQuery(params)
         break
       case 'report':
+        props.handleSetReportCluster(params.cluster)
+        props.handleSetReportInstance(params.instance)
         props.handleGetReport(params)
         break
       default:
@@ -92,7 +93,9 @@ const mapDispatchToProps = dispatch => ({
   handleGetRealtimeQuery: params => dispatch(getRealtimeQuery(params)),
   handleSetRealtimeCluster: cluster => dispatch(realtimeClusterSet(cluster)),
   handleSetRealtimeInstance: instance => dispatch(realtimeInstanceSet(instance)),
-  handleGetReport: params => dispatch(getReport(params))
+  handleGetReport: params => dispatch(getReport(params)),
+  handleSetReportCluster: cluster => dispatch(reportClusterSet(cluster)),
+  handleSetReportInstance: instance => dispatch(reportInstanceSet(instance))
 })
 
 export default connect(

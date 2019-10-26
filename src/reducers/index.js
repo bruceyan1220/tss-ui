@@ -6,7 +6,9 @@ const reducer = (
     realtimeQuery: [],
     realtimeCluster: '',
     realtimeInstance: '',
-    report: []
+    report: [],
+    reportCluster: '',
+    reportInstance: ''
   },
   action
 ) => {
@@ -21,6 +23,10 @@ const reducer = (
       return { ...state, realtimeInstance: action.instance }
     case types.REPORT_GET:
       return { ...state, report: action.data }
+    case types.REPORT_CLUSTER_SET:
+      return { ...state, reportCluster: action.cluster }
+    case types.REPORT_INSTANCE_SET:
+      return { ...state, reportInstance: action.instance }
     default:
       return state
   }

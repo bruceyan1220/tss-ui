@@ -1,0 +1,11 @@
+.tss-Details {
+  position: fixed;
+  top: 0;
+  width: 50vw;
+  height: calc(100vh - 4rem);
+  margin: 2rem 0;
+  background: #fff;
+  transition: all 0.5s;
+  transform: translateX(100vw);
+  z-index: 999;
+}
