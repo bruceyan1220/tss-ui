@@ -1,0 +1,45 @@
+.tss-TableWrapper {
+  overflow-x: auto;
+}
+
+.tss-Table {
+  margin-bottom: 0 !important;
+
+  thead {
+    th {
+      cursor: pointer;
+    }
+  }
+
+  tbody {
+    overflow-y: scroll;
+
+    td {
+      cursor: pointer;
+    }
+  }
+}
+
+.table-no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.tss-TableHeader {
+}
+
+.tss-TableItem {
+  .sql-text {
+    min-width: 450px;
+  }
+
+  .max-memory {
+    min-width: 100px;
+  }
+
+  .datetime {
+    min-width: 200px;
+  }
+}

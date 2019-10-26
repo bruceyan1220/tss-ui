@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 
 import mockData from './mockData'
 
+const duration = 1000
+
 class AreaChart extends Component {
   constructor(props) {
     super(props)
@@ -27,7 +29,7 @@ class AreaChart extends Component {
 
     const margin = { top: 15, right: 30, bottom: 30, left: 30 }
     const width = wrapper.offsetWidth - margin.left - margin.right
-    const height = 300 - margin.top - margin.bottom
+    const height = 250 - margin.top - margin.bottom
     this.height = height
     const color = this.props.color || '#00d1b2'
 
@@ -142,20 +144,20 @@ class AreaChart extends Component {
     this.svg
       .select('.area-chart-x')
       .transition()
-      .duration(2000)
+      .duration(duration)
       .call(this.xAxis)
-    this.y.domain([0, 10 ** String(d3.max(data, d => d.count)).length])
+    this.y.domain([0, ((d3.max(data, d => d.count) * 3) / 2).toFixed(0)])
     this.svg
       .select('.area-chart-y')
       .transition()
-      .duration(2000)
+      .duration(duration)
       .call(this.yAxis)
 
     this.svg
       .select('.area-chart-area')
       .datum(data)
       .transition()
-      .duration(2000)
+      .duration(duration)
       .attr(
         'd',
         d3
@@ -169,7 +171,7 @@ class AreaChart extends Component {
       .select('.area-chart-line')
       .datum(data)
       .transition()
-      .duration(2000)
+      .duration(duration)
       .attr(
         'd',
         d3

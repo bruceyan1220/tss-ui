@@ -3,7 +3,10 @@ import * as types from '../actions/types'
 const reducer = (
   state = {
     realtimeTrending: [],
-    realtimeQuery: []
+    realtimeQuery: [],
+    realtimeCluster: '',
+    realtimeInstance: '',
+    report: []
   },
   action
 ) => {
@@ -12,6 +15,12 @@ const reducer = (
       return { ...state, realtimeTrending: action.data }
     case types.REALTIME_QUERY_GET:
       return { ...state, realtimeQuery: action.data }
+    case types.REALTIME_CLUSTER_SET:
+      return { ...state, realtimeCluster: action.cluster }
+    case types.REALTIME_INSTANCE_SET:
+      return { ...state, realtimeInstance: action.instance }
+    case types.REPORT_GET:
+      return { ...state, report: action.data }
     default:
       return state
   }

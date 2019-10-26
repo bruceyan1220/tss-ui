@@ -1,8 +1,9 @@
-import moment from 'moment'
-import $ from 'jquery'
 import 'daterangepicker'
 
 import React, { useEffect, useRef } from 'react'
+
+import $ from 'jquery'
+import moment from 'moment'
 
 const DateTimePicker = props => {
   const inputEl = useRef(null)
@@ -30,7 +31,19 @@ const DateTimePicker = props => {
           props.handlePickCallback(start, end)
         }
       })
-  }, [props])
+
+    if (typeof props.handlePickCallback === 'function') {
+      props.handlePickCallback(
+        $(inputEl.current)
+          .data('daterangepicker')
+          .startDate.format('YYYY-MM-DD HH:mm:ss'),
+        $(inputEl.current)
+          .data('daterangepicker')
+          .endDate.format('YYYY-MM-DD HH:mm:ss')
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="field tss-DateTimePicker">

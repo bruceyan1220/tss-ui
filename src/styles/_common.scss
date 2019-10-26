@@ -10,6 +10,8 @@ $input-focus-box-shadow-color: rgba($turquoise, 0.25);
 @import '../../node_modules/bulma/sass/form/_all';
 
 $MainBackgroundColor: #eaeaea;
+$TooltipBackgroundColor: #222;
+$TooltipFontColor: #fff;
 
 @mixin VHCenter {
   display: flex;
