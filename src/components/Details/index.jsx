@@ -31,6 +31,21 @@ const Details = props => {
       <div className="panel-block">
         <AreaChart data={props.singleSqlTrending} />
       </div>
+      <div className="panel-block sql-info">
+        {props.sqlInfo &&
+          props.sqlInfo.map(([k, v]) => {
+            if (k === 'plan') {
+              v = 1
+            }
+
+            return (
+              <div key={k}>
+                <div className="title is-6">{k}</div>
+                <div>{v}</div>
+              </div>
+            )
+          })}
+      </div>
     </article>
   )
 }

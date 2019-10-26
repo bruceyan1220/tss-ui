@@ -119,6 +119,9 @@ class AreaChart extends Component {
 
     const that = this
     function mousemove() {
+      if (!that.props.data) {
+        return
+      }
       const data = that.props.data && that.props.data.length > 0 ? that.props.data : mockData
 
       const x0 = x.invert(d3.mouse(this)[0])
