@@ -2,6 +2,28 @@ import React from 'react'
 import AreaChart from '../AreaChart'
 import { connect } from 'react-redux'
 
+function renderPlan(plan, keys) {
+  const header = keys
+  const rows = plan.map(item => {
+    const result = []
+    header.forEach(h => {
+      result.push(item[h])
+    })
+    return result
+  })
+  const maxWidths = rows.reduce((acc, row) => {
+    return acc.map((item, i) => {
+      return Math.max(item, row[i].length)
+    })
+  }, header.map(h => h.length))
+  const renderSep = widths => '|' + widths.map(w => '-'.repeat(w + 2)).join('+') + '|'
+  const pad = (s, length) => ' ' + s + ' '.repeat((length - s.length > 0 ? length - s.length : 0) + 1)
+  cosnt renderRow = (row, widths) => {}
+  const render = (header, rows) => {
+    
+  }
+}
+
 const Details = props => {
   let handleClose = () => {
     const app = document.querySelector('.tss-App')
