@@ -31,13 +31,24 @@ const TableItem = props => {
       <td className="sql-text" data-tip={item.sql_text} data-for="sqlText">
         {item.sql_text && item.sql_text.substring(0, 50) + '...'}
       </td>
-      <td className="datetime">
-        {moment(
-          moment(item.day_time)
-            .utc()
-            .format('YYYY-MM-DD HH:mm:ss')
-        ).fromNow()}
-      </td>
+      {item.day_time && (
+        <td className="datetime">
+          {moment(
+            moment(item.day_time)
+              .utc()
+              .format('YYYY-MM-DD HH:mm:ss')
+          ).fromNow()}
+        </td>
+      )}
+      {item.first_seen && (
+        <td className="datetime">
+          {moment(
+            moment(item.first_seen)
+              .utc()
+              .format('YYYY-MM-DD HH:mm:ss')
+          ).fromNow()}
+        </td>
+      )}
       <td>{item.query_time.toFixed(3)}</td>
       <td>{item.process_keys}</td>
       <td>{item.process_time.toFixed(3)}</td>

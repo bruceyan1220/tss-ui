@@ -18,7 +18,8 @@ const TableHeader = props => {
           <i className="fas fa-sort has-text-primary" /> SQL Id
         </th>
         <th>SQL Text</th>
-        <th>Datetime</th>
+        {item.day_time && <th>Datetime</th>}
+        {item.first_seen && <th>First Seen</th>}
         <th
           onClick={props.handleSortTable((a, b) => a.query_time - b.query_time, (a, b) => b.query_time - a.query_time)}
         >
