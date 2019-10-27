@@ -25,3 +25,5 @@ yarn-error.log*
 /lib/bs
 .bsb.lock
 .merlin
+
+package-lock.json
