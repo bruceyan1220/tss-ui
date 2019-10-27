@@ -32,12 +32,12 @@
 }
 
 .tss-TableItem {
-  .sql-text {
-    min-width: 450px;
+  td {
+    min-width: 100px;
   }
 
-  .max-memory {
-    min-width: 100px;
+  .sql-text {
+    min-width: 450px;
   }
 
   .datetime {

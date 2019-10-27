@@ -11,12 +11,6 @@ import { connect } from 'react-redux'
 const Realtime = props => {
   const realtimeId = useRef(null)
   const [realtime, setRealtime] = useState(false)
-  const [tableData, setTableData] = useState([])
-  const [asc, setAsc] = useState(false)
-
-  useEffect(() => {
-    setTableData(props.queryData)
-  }, [props.queryData])
 
   useEffect(
     () => () => {
@@ -46,16 +40,6 @@ const Realtime = props => {
           end: ''
         })
       }, 5000)
-    }
-  }
-
-  const handleSortTable = (f1, f2) => () => {
-    if (asc) {
-      setTableData(tableData.sort(f2))
-      setAsc(false)
-    } else {
-      setTableData(tableData.sort(f1))
-      setAsc(true)
     }
   }
 
@@ -89,8 +73,7 @@ const Realtime = props => {
         <Table
           header={TableHeader}
           item={TableItem}
-          data={tableData}
-          handleSortTable={handleSortTable}
+          data={props.queryData}
           handleGetSqlInfo={props.handleGetSqlInfo}
           handleGetSingleSqlTrending={props.handleGetSingleSqlTrending}
         />

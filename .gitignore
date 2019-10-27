@@ -23,6 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /lib/bs
-/src/**/*.bs.js
 .bsb.lock
 .merlin

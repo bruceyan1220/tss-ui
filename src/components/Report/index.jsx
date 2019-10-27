@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Table from '../Table'
 import TableHeader from '../Table/TableHeader'
 import TableItem from '../Table/TableItem'
@@ -7,23 +7,6 @@ import { connect } from 'react-redux'
 import { getSqlInfo, getSingleSqlTrending } from '../../actions/apis'
 
 const Report = props => {
-  const [tableData, setTableData] = useState([])
-  const [asc, setAsc] = useState(false)
-
-  useEffect(() => {
-    setTableData(props.reportData)
-  }, [props.reportData])
-
-  const handleSortTable = (f1, f2) => () => {
-    if (asc) {
-      setTableData(tableData.sort(f2))
-      setAsc(false)
-    } else {
-      setTableData(tableData.sort(f1))
-      setAsc(true)
-    }
-  }
-
   return (
     <div className="tss-Report">
       <TssInputGroup type="report" />
@@ -38,7 +21,6 @@ const Report = props => {
           header={TableHeader}
           item={TableItem}
           data={props.reportData}
-          handleSortTable={handleSortTable}
           handleGetSqlInfo={props.handleGetSqlInfo}
           handleGetSingleSqlTrending={props.handleGetSingleSqlTrending}
         />
