@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 const TssInputGroup = props => {
   const [params, setParams] = useState({
-    cluster: '',
+    cluster: 'ugc',
     instance: '',
     start: '',
     end: ''
@@ -58,6 +58,7 @@ const TssInputGroup = props => {
                 className="input"
                 type="text"
                 placeholder="Type a cluster name"
+                value={params.cluster}
                 onChange={handleInputChange('cluster')}
                 onKeyDown={handleInputOnKeyDown}
               />

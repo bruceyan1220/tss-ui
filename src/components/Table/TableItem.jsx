@@ -16,7 +16,13 @@ const TableItem = props => {
   }
 
   return (
-    <tr className="tss-TableItem" onClick={handleShowDetails}>
+    <tr
+      style={{
+        background: item.affirm ? '#eaeaea' : ''
+      }}
+      className="tss-TableItem"
+      onClick={handleShowDetails}
+    >
       <td>{item.cluster}</td>
       {item.inst_name && <td>{item.inst_name}</td>}
       <td>{item.schema_name}</td>
