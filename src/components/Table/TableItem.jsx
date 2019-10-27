@@ -18,12 +18,14 @@ const TableItem = props => {
   return (
     <tr
       style={{
-        background: item.affirm ? '#eaeaea' : ''
+        background: item.affirm === 1 ? '#eaeaea' : ''
       }}
       className="tss-TableItem"
       onClick={handleShowDetails}
     >
-      <td>{item.cluster}</td>
+      <td>
+        {item.cluster} {item.affirm === 1 && <i className="fas fa-check has-text-primary"></i>}
+      </td>
       {item.inst_name && <td>{item.inst_name}</td>}
       <td>{item.schema_name}</td>
       {item.count && <td>{item.count}</td>}
