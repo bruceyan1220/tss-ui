@@ -18,10 +18,14 @@ function renderPlan(plan, keys) {
   }, header.map(h => h.length))
   const renderSep = widths => '|' + widths.map(w => '-'.repeat(w + 2)).join('+') + '|'
   const pad = (s, length) => ' ' + s + ' '.repeat((length - s.length > 0 ? length - s.length : 0) + 1)
-  cosnt renderRow = (row, widths) => {}
-  const render = (header, rows) => {
-    
-  }
+  const renderRow = (row, widths) => '|' + row.map((r, i) => pad(r, widths[i])).join('|') + '|'
+  const render = (header, rows) =>
+    [renderRow(header, maxWidths)]
+      .concat([renderSep(maxWidths)])
+      .concat(rows.map(row => renderRow(row, maxWidths)))
+      .join('\n')
+
+  return render(header, rows)
 }
 
 const Details = props => {
@@ -57,7 +61,8 @@ const Details = props => {
         {props.sqlInfo &&
           props.sqlInfo.map(([k, v]) => {
             if (k === 'plan') {
-              v = 1
+              v = renderPlan(v, ['id', 'count', 'task', 'operator_info'])
+              v = <pre>{v}</pre>
             }
 
             return (
