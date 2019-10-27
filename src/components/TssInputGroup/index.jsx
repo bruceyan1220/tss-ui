@@ -17,6 +17,12 @@ const TssInputGroup = props => {
     setParams({ ...params, [type]: e.target.value })
   }
 
+  const handleInputOnKeyDown = e => {
+    if (e.key === 'Enter') {
+      handleDifferentGet()
+    }
+  }
+
   const handleDifferentGet = () => {
     switch (props.type) {
       case 'realtime':
@@ -53,6 +59,7 @@ const TssInputGroup = props => {
                 type="text"
                 placeholder="Type a cluster name"
                 onChange={handleInputChange('cluster')}
+                onKeyDown={handleInputOnKeyDown}
               />
             </p>
           </div>
@@ -66,6 +73,7 @@ const TssInputGroup = props => {
                 type="text"
                 placeholder="Type a instance name"
                 onChange={handleInputChange('instance')}
+                onKeyDown={handleInputOnKeyDown}
               />
             </p>
           </div>
