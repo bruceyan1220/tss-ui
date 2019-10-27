@@ -20,10 +20,12 @@ function renderPlan(plan, keys) {
   const pad = (s, length) => ' ' + s + ' '.repeat((length - s.length > 0 ? length - s.length : 0) + 1)
   const renderRow = (row, widths) => '|' + row.map((r, i) => pad(r, widths[i])).join('|') + '|'
   const render = (header, rows) =>
-    [renderRow(header, maxWidths)]
+    [renderSep(maxWidths), renderRow(header, maxWidths)]
       .concat([renderSep(maxWidths)])
       .concat(rows.map(row => renderRow(row, maxWidths)))
-      .join('\n')
+      .concat([renderSep(maxWidths)])
+      .join('\n') +
+    '-'.repeat(maxWidths)
 
   return render(header, rows)
 }
